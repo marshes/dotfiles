@@ -1,0 +1,108 @@
+# Navigation
+lctrl - j : yabai -m window --focus west
+lctrl - k : yabai -m window --focus south
+lctrl - i : yabai -m window --focus north
+lctrl - l : yabai -m window --focus east
+
+# Moving windows
+shift + lctrl - left  : yabai -m window --warp west
+shift + lctrl - down  : yabai -m window --warp south
+shift + lctrl - up    : yabai -m window --warp north
+shift + lctrl - right : yabai -m window --warp east
+
+# Navigate all windows including floating
+lctrl - 0x29 : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | reverse | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
+lctrl - h : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | reverse | nth(index(map(select(.\"has-focus\" == true))) + 1).id")"
+
+# Float + move to center w/ border / Unfloat window
+shift + lctrl - space : \
+    yabai -m window --toggle float; \
+    yabai -m window --toggle border; \
+    yabai -m window --grid 8:8:2:1:4:6
+
+
+# Move Windows two steps -works with floating and tiling
+shift + lctrl - j : yabai -m window --resize left:-100:0; \
+                    yabai -m window --resize right:-100:0
+shift + lctrl - k : yabai -m window --resize bottom:0:100; \
+                    yabai -m window --resize top:0:100
+shift + lctrl - i : yabai -m window --resize top:0:-100; \
+                    yabai -m window --resize bottom:0:-100
+shift + lctrl - l : yabai -m window --resize right:100:0; \
+                    yabai -m window --resize left:100:0
+
+# Move windows only works on floating windows and should remain commented out in favor of the above block
+# shift + lctrl - j : yabai -m window --move rel:-100:0
+# shift + lctrl - k : yabai -m window --move rel:0:100
+# shift + lctrl - l : yabai -m window --move rel:100:0
+# shift + lctrl - i : yabai -m window --move rel:0:-100
+
+
+# set insertion point in focused container Current mapping is duplicative, if I want to use it need a new keyboard shortcut
+# shift + lctrl - left  : yabai -m window --insert west    
+# shift + lctrl - down  : yabai -m window --insert south
+# shift + lctrl - up    : yabai -m window --insert north
+# shift + lctrl - right : yabai -m window --insert east
+                 
+
+# Expand windows
+shift + lctrl - m : yabai -m window --resize top_left:-50:-50; \
+                    yabai -m window --resize bottom_right:50:50
+shift + lctrl - n : yabai -m window --resize top_left:50:50; \
+                    yabai -m window --resize bottom_right:-50:-50
+
+# Balance Windows
+shift + lctrl - b : yabai -m space --balance
+
+# Rotate windows clockwise and anticlockwise
+shift + lctrl - u : yabai -m space --rotate 90
+shift + lctrl - o : yabai -m space --rotate 270
+
+# Rotate on X and Y Axis
+shift + lctrl - 8    : yabai -m space --mirror x-axis
+shift + lctrl - h    : yabai -m space --mirror y-axis
+shift + lctrl - 0x29 : yabai -m space --mirror y-axis
+
+# Change focus from one monitor to the other (only if 2 monitor setup)
+shift + lctrl - s : yabai -m display --focus recent
+
+# Move focused window to workspace and then use skhd to send keyboard shortcut to change view to that window
+
+shift + lctrl - 1 : yabai -m window --space 1 --focus
+shift + lctrl - 2 : yabai -m window --space 2 --focus
+shift + lctrl - 3 : yabai -m window --space 3 --focus
+shift + lctrl - 4 : yabai -m window --space 4 --focus
+shift + lctrl - 5 : yabai -m window --space 5 --focus
+shift + lctrl - 6 : yabai -m window --space 6 --focus
+shift + lctrl - 7 : yabai -m window --space 7 --focus
+
+
+
+
+# backup move window commands (depreciated?)
+#shift + lctrl - 1 : yabai -m window --space 1; \
+#    skhd -k "ctrl - 1"
+#shift + lctrl - 2 : yabai -m window --space 2; \
+#    skhd -k "ctrl - 2"
+#shift + lctrl - 3 : yabai -m window --space 3; \
+#    skhd -k "ctrl - 3"
+#shift + lctrl - 4 : yabai -m window --space 4; \
+#    skhd -k "ctrl - 4"
+#shift + lctrl - 5 : yabai -m window --space 5; \
+#    skhd -k "ctrl - 5"
+#shift + lctrl - 6 : yabai -m window --space 6; \
+#    skhd -k "ctrl - 6"
+#shift + lctrl - 7 : yabai -m window --space 7; \
+#    skhd -k "ctrl - 7"
+
+
+# Open Apps w/ Shortcuts
+cmd + alt - c : open /Applications/Google\ Chrome.app                   # switch to chrome
+cmd + alt - a : open /Applications/Arc.app                              # switch to arc
+cmd + alt - o : open /Applications/Microsoft\ Outlook.app               # switch to outlook
+cmd + alt - b : open /Applications/Obsidian.app                         # switch to obsidian
+cmd + alt - s : open /Applications/Slack.app                            # slack
+cmd + alt - t : osascript -e 'tell application "Terminal" to activate'  # Terminal
+cmd + alt - u : open /Applications/Sublime\ Text.app                    # t for text edit as s is for slack
+cmd + alt - i : open /Applications/Amazon\ Chime.app                    # i for chIme as
+cmd + alt - m : osascript -e 'tell application "Messages" to activate'  # Messages
