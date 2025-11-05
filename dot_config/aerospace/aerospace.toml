@@ -185,8 +185,8 @@ alt-k = 'join-with down'
 alt-o = 'layout horizontal vertical'
 alt-u = 'layout horizontal vertical'
 
-# ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
-ctrl-shift-space = 'exec-and-forget ~/.config/aerospace/toggle-floating-centered.sh'
+ctrl-shift-space = "exec-and-forget aerospace layout floating && sleep 0.2 && open -g 'raycast://extensions/raycast/window-management/almost-maximize' || aerospace layout tiling"
+
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -194,11 +194,7 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 
-
 alt-shift-r = ['reload-config', 'flatten-workspace-tree']
-
-
-
 
 
 
