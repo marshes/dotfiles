@@ -97,17 +97,6 @@
         source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
     fi
 
-    # zsh settings
-    # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    # ZSH_AUTOSUGGESTION_HISTORY_IGNORE="man *"
-
-    #    # Configure autocomplete to show automatically
-    #    zstyle ':autocomplete:*' min-input 1        # Show after 1 character
-    #    zstyle ':autocomplete:*' delay 0.1          # 0.1 second delay
-    #    zstyle ':autocomplete:*' list-lines 16      # Show 16 lines
-    #    zstyle ':autocomplete:*' recent-dirs zoxide # Use zoxide for dirs
-
-
     # Lazy-load antidote and generate the static load file only when needed
     zsh_plugins=''${ZDOTDIR:-$HOME}/.zsh_plugins
     if [[ ! ''${zsh_plugins}.zsh -nt ''${zsh_plugins}.txt ]]; then
@@ -116,7 +105,16 @@
         antidote bundle <''${zsh_plugins}.txt >''${zsh_plugins}.zsh
       )
     fi
+
+    # source plugins established by antidote's zsh_plugins.txt file
     source ''${zsh_plugins}.zsh
+
+    # remove duplicates from up arrow autocomplete history
+    setopt HIST_FIND_NO_DUPS
+
+    # zsh settings
+    # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    # ZSH_AUTOSUGGESTION_HISTORY_IGNORE="man *"
 
     #p10k config
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -127,6 +125,9 @@
     # Zoxide
     eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
 
+    # setup micro as default editor
+    export EDITOR="micro"
+
     # Aliases
     alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#macos"
     alias cd=z
@@ -134,17 +135,11 @@
     alias sublime=subl
     alias cz=chezmoi
 
-    # remove duplicates from up arrow autocomplete history
-    setopt HIST_FIND_NO_DUPS
-
     # backwards word delete, option backspace
     bindkey '^[[3;3~' kill-word
 
     # mapping fn+backspace to delete word in front of cursor
     bindkey "^[[3~" delete-char
-
-    # setup micro as default editor
-    export EDITOR="micro"
     '';
   };
 
@@ -154,11 +149,12 @@
       autohide = true;
       autohide-delay = 0.0;
       orientation = "bottom";
+      showAppExposeGestureEnabled = true;
+      show-recents = false;
       wvous-tl-corner = 4;  # hot corner top left = desktop
       wvous-tr-corner = 4;  # hot corner top right = desktop
       wvous-bl-corner = 3;  # hot corner bottom left = application window
       wvous-br-corner = 2;  # hot corner bottom right = mission control
-      show-recents = false;
      # static-only = true;
      # tilesize = 32;
     };
@@ -177,9 +173,10 @@
       "com.apple.trackpad.scaling" = 1.4;
     };
     trackpad = {
-      ActuationStrength = 0;
+      #ActuationStrength = 0; # <--- this setting seems to be gone in newer macos versions
       Clicking = true;
       FirstClickThreshold = 0;
+      ForceSuppressed = true;
       TrackpadThreeFingerTapGesture = 0;
     };
     WindowManager = {
