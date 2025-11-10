@@ -8,13 +8,22 @@
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#macos
-    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-      modules = [ ./macos.nix ];
-      specialArgs = { inherit self; };
+    darwinConfigurations = {
+      # Your existing config - use this for personal machines
+      "macos" = nix-darwin.lib.darwinSystem {
+        modules = [ ./macos.nix ];
+        specialArgs = { inherit self; };
+      };
+      
+      # New work laptop config
+      "work-laptop" = nix-darwin.lib.darwinSystem {
+        modules = [ 
+          ./macos.nix 
+          ./work-laptop.nix
+        ];
+        specialArgs = { inherit self; };
+      };
     };
   };
 }
