@@ -72,7 +72,7 @@ inner.horizontal = 16
 inner.vertical =   16
 outer.left =       10
 outer.bottom =     10
-outer.top =        [{ monitor.main = 55 }, 10]
+outer.top =        [{ monitor."^(?!.*built-in).*$" = 55 }, 10]
 outer.right =      10
 
 
@@ -204,6 +204,7 @@ alt-shift-r = ['reload-config', 'flatten-workspace-tree']
 # APPLICATION LAUNCH SHORTCUTS
 alt-cmd-a = 'exec-and-forget current_workspace=$(aerospace list-workspaces --focused); open "/Users/matmarsh/Applications/Chrome Apps.localized/● My tasks - Work Asana.app"; aerospace move-node-to-workspace "$current_workspace" --focus-follows-window' #makes app open on any workspace
 alt-cmd-c = 'exec-and-forget open /Applications/Google\ Chrome.app'
+alt-cmd-g = 'exec-and-forget open /Applications/Ghostty.app'
 alt-cmd-h = 'exec-and-forget open /Applications/Amazon\ Chime.app'
 # alt-cmd-m = 'exec-and-forget open /System/Applications/Messages.app'
 alt-cmd-m = 'exec-and-forget current_workspace=$(aerospace list-workspaces --focused); open "/System/Applications/Messages.app"; aerospace move-node-to-workspace "$current_workspace" --focus-follows-window'
