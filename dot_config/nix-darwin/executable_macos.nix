@@ -84,56 +84,62 @@
   programs.zsh = {
     enable = true;
     promptInit = ''
-    # this act as your ~/.zshrc but for all users (/etc/zshrc)
+    if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+      # skips all custom prompts
+    else
+      # this act as your ~/.zshrc but for all users (/etc/zshrc)
 
-    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-    # Initialization code that may require console input (password prompts, [y/n]
-    # confirmations, etc.) must go above this block; everything else may go below.
-    # double single quotes to escape the dollar char
+      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+      # Initialization code that may require console input (password prompts, [y/n]
+      # confirmations, etc.) must go above this block; everything else may go below.
+      # double single quotes to escape the dollar char
 
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+      eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    if [[ -r "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-    fi
+      if [[ -r "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
 
-    # Lazy-load antidote and generate the static load file only when needed
-    zsh_plugins=$HOME/.zsh_plugins
-    if [[ ! ''${zsh_plugins}.zsh -nt ''${zsh_plugins}.txt ]]; then
-      (
-        source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-        antidote bundle <''${zsh_plugins}.txt >''${zsh_plugins}.zsh
-      )
-    fi
+      # Lazy-load antidote and generate the static load file only when needed
+      zsh_plugins=$HOME/.zsh_plugins
+      if [[ ! ''${zsh_plugins}.zsh -nt ''${zsh_plugins}.txt ]]; then
+        (
+          source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+          antidote bundle <''${zsh_plugins}.txt >''${zsh_plugins}.zsh
+        )
+      fi
 
-    # source plugins established by antidote's zsh_plugins.txt file
-    source ''${zsh_plugins}.zsh
+      # source plugins established by antidote's zsh_plugins.txt file
+      source ''${zsh_plugins}.zsh
 
-    # remove duplicates from up arrow autocomplete history
-    setopt HIST_FIND_NO_DUPS
+      # remove duplicates from up arrow autocomplete history
+      setopt HIST_FIND_NO_DUPS
 
-    # zsh settings
-    # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    # ZSH_AUTOSUGGESTION_HISTORY_IGNORE="man *"
+      # zsh settings
+      # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+      # ZSH_AUTOSUGGESTION_HISTORY_IGNORE="man *"
 
-    #p10k config
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      #p10k config
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-    # pay respects -the updated thefuck
-    eval "$(${pkgs.pay-respects}/bin/pay-respects zsh --alias)"
+      # pay respects -the updated thefuck
+      eval "$(${pkgs.pay-respects}/bin/pay-respects zsh --alias)"
 
-    # Zoxide
-    eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+      # Zoxide
+      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
 
-    # setup micro as default editor
-    export EDITOR="micro"
+      # setup micro as default editor
+      export EDITOR="micro"
 
     # Aliases
-    alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#work-laptop"
-    alias cd=z
-    alias cat=bat
-    alias sublime=subl
-    alias cz=chezmoi
+      alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#work-laptop"
+      alias cd=z
+      alias cat=bat
+      alias sublime=subl
+      alias cz=chezmoi
+
+    # end vscode block 
+    fi
 
     # backwards word delete, option backspace
     bindkey '^[[3;3~' kill-word
