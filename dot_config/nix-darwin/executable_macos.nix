@@ -42,6 +42,8 @@
       "gh" # <-- github auth helper
       "koekeishiya/formulae/skhd"
       "mas"
+    ] ++ pkgs.lib.optionals (config.networking.hostName == "ac07754166e1") [
+      "node"
     ];
 
     casks 
@@ -98,7 +100,7 @@
     fi
 
     # Lazy-load antidote and generate the static load file only when needed
-    zsh_plugins=''${ZDOTDIR:-$HOME}/.zsh_plugins
+    zsh_plugins=$HOME/.zsh_plugins
     if [[ ! ''${zsh_plugins}.zsh -nt ''${zsh_plugins}.txt ]]; then
       (
         source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
