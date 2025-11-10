@@ -129,7 +129,7 @@
     export EDITOR="micro"
 
     # Aliases
-    alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#macos"
+    alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#work-laptop"
     alias cd=z
     alias cat=bat
     alias sublime=subl
