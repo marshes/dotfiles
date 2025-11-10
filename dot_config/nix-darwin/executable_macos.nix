@@ -42,8 +42,6 @@
       "gh" # <-- github auth helper
       "koekeishiya/formulae/skhd"
       "mas"
-    ] ++ pkgs.lib.optionals (config.networking.hostName == "ac07754166e1") [
-      "node"
     ];
 
     casks 
