@@ -24,6 +24,7 @@
      neofetch # system info
      pay-respects # fix typos quickly / update of thefuck
      tree # see folder structure
+     wget #...wget
      zoxide # to quickly jump to directories -replaces cd
     ];
 
