@@ -85,7 +85,7 @@
   programs.zsh = {
     enable = true;
     promptInit = ''
-    if [[ "$TERM_PROGRAM" == "vscode" || "$TERM_PROGRAM" == "kiro" ]]; then
+    if [[ "$TERM_PROGRAM" == "vscode" || "$TERM_PROGRAM" == "claude" || "$TERM_PROGRAM" == "kiro" ]]; then
       # skips all custom prompts
     else
       # this act as your ~/.zshrc but for all users (/etc/zshrc)
