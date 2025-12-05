@@ -8,4 +8,8 @@
   homebrew.brews = [
     "node"
   ];
+  homebrew.cask =[
+  	"qlmarkdown"
+  ]
+
 }
