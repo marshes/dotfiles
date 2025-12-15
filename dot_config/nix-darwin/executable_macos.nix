@@ -147,7 +147,10 @@
       alias cz=chezmoi
 
     # Eza ls aliases
-      alias ls='eza --icons --hyperlink --group-directories-first'
+      alias eza='eza --icons --group-directories-first'
+      alias ll='eza -lh'
+      alias la='eza -lah'
+      alias lt='eza --tree --level=2'
 
     # end vscode block 
     fi
