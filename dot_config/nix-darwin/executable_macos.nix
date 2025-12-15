@@ -32,6 +32,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
+      upgrade = true;
       cleanup = "zap"; # <-- uncommment when setting up a new system, deletes anything installed manually, i.e. not declared in this file
     };
 
@@ -39,6 +40,7 @@
       "antidote"
       "FelixKratz/formulae/borders"
       "chezmoi" # <-- dot file manager
+      "eza" # ls replacement, works well with additional aliases
       "gawk" # <-- needed for antidote zsh plugin manager
       "gh" # <-- github auth helper
       "koekeishiya/formulae/skhd"
@@ -47,14 +49,16 @@
 
     casks 
     = [
-     #"nikitabobko/tap/aerospace" #trying out hyprspace
+     #"acsandmann/tap/rift" #rift wm
+     "nikitabobko/tap/aerospace" #trying out hyprspace
      "alt-tab"
      "mocki-toki/formulae/barik"
-     "BarutSRB/tap/hyprspace"
+     #"BarutSRB/tap/hyprspace" #fork of aerospace
      "bluesnooze"
      "clop" # <-- macos image clipboard compression
      "ghostty"
      "hammerspoon"
+     "imageoptim"
      "jordanbaird-ice"
      "mac-mouse-fix@2" # @2 to keep it to version 2.2.5 which is free
      "notunes"
@@ -71,11 +75,12 @@
     ];
 
   taps = [
-    "BarutSRB/tap" #hyprspace aerospace fork
+    #"acsandmann/tap" #rift wm
+    #"BarutSRB/tap" #hyprspace aerospace fork
     "FelixKratz/formulae"
     "koekeishiya/formulae"
     "mocki-toki/formulae"
-    #"nikitabobko/tap" # tap for aerospace
+    "nikitabobko/tap" # tap for aerospace
   ];
 
     masApps = {
@@ -140,6 +145,9 @@
       alias cat=bat
       alias sublime=subl
       alias cz=chezmoi
+
+    # Eza ls aliases
+      alias ls='eza --icons --hyperlink --group-directories-first'
 
     # end vscode block 
     fi
