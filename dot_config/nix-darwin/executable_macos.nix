@@ -148,6 +148,7 @@
 
     # Eza ls aliases
       alias eza='eza --icons --group-directories-first'
+      alias ls='eza'
       alias ll='eza -lh'
       alias la='eza -lah'
       alias lt='eza --tree --level=2'
