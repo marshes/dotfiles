@@ -28,5 +28,10 @@
     taps = [
     #"acsandmann/tap" #placeholder
     ];
+
+    masApps = {
+     WireGuard = 1451685025;
+    };
+
   };
 }
