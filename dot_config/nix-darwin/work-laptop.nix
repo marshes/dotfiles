@@ -14,6 +14,7 @@
     };
 
     brews = [
+      "wireguard-tools"
       "lazygit"
       "node"
       "uv"
