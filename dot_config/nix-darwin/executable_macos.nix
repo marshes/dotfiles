@@ -53,7 +53,7 @@
      "nikitabobko/tap/aerospace" #trying out hyprspace
      "alt-tab"
      "mocki-toki/formulae/barik"
-     #"BarutSRB/tap/hyprspace" #fork of aerospace
+     "BarutSRB/tap/omniwm" #fork of aerospace
      "bluesnooze"
      "clop" # <-- macos image clipboard compression
      "ghostty"
@@ -76,7 +76,7 @@
 
   taps = [
     #"acsandmann/tap" #rift wm
-    #"BarutSRB/tap" #hyprspace aerospace fork
+    "BarutSRB/tap" #hyprspace aerospace fork
     "FelixKratz/formulae"
     "koekeishiya/formulae"
     "mocki-toki/formulae"
