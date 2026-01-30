@@ -59,7 +59,7 @@
      "ghostty"
      "hammerspoon"
      "imageoptim"
-     "jordanbaird-ice"
+     "jordanbaird-ice@beta"
      "mac-mouse-fix@2" # @2 to keep it to version 2.2.5 which is free
      "notunes"
      "obsidian"
