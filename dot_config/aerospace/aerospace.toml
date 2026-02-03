@@ -303,6 +303,14 @@ if.during-aerospace-startup = true
 check-further-callbacks = true
 run = ['move-node-to-workspace Email']  # The callback itself
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+if.window-title-regex-substring = 'Reminders?$'
+run = ['/bin/bash', '-c', '''
+    current_workspace=$(aerospace list-workspaces --focused)
+    aerospace move-node-to-workspace "$current_workspace"
+''']
+
 # other apps to use
 # com.microsoft.Outlook
 # com.google.Chrome.app.fclafjnkcgbdgecfapdigajejkdhehli - my current asana chrome app
