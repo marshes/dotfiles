@@ -306,10 +306,7 @@ run = ['move-node-to-workspace Email']  # The callback itself
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 if.window-title-regex-substring = 'Reminders?$'
-run = ['/bin/bash', '-c', '''
-    current_workspace=$(aerospace list-workspaces --focused)
-    aerospace move-node-to-workspace "$current_workspace"
-''']
+run = ['move-node-to-workspace Email']
 
 # other apps to use
 # com.microsoft.Outlook
