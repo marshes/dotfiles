@@ -23,6 +23,7 @@
     = [
      "claude-code"
      "qlmarkdown"
+     "markedit"
     ];
 
     taps = [
