@@ -22,6 +22,7 @@
     casks 
     = [
      "claude-code"
+     "font-meslo-lg-nerd-font"
      "iterm2"
      "qlmarkdown"
      "markedit"
