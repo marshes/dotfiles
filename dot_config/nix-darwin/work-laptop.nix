@@ -22,6 +22,7 @@
     casks 
     = [
      "claude-code"
+     "iterm2"
      "qlmarkdown"
      "markedit"
     ];
