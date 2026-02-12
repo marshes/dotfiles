@@ -16,6 +16,7 @@
     brews = [
       "lazygit"
       "node"
+      "rbenv"
       "uv"
     ];
 
