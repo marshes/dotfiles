@@ -1,5 +1,6 @@
 {
     "colorscheme": "nord-16",
+    "reload": "auto",
     "softwrap": true,
     "wordwrap": true
 }
