@@ -22,7 +22,7 @@
 
     casks 
     = [
-     "claude-code"
+     #"claude-code" #replacing with native install from anthropic
      "font-meslo-lg-nerd-font"
      "iterm2"
      "qlmarkdown"
