@@ -18,6 +18,7 @@
       "lazygit"
       "node"
       "rbenv"
+      "shellcheck"
       "uv"
     ];
 
