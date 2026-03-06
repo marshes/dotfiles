@@ -139,6 +139,13 @@
       # setup micro as default editor
       export EDITOR="micro"
 
+    # custom command
+      mkdircd() { mkdir -p "$1" && cd "$1"; }
+
+    # alias for mkdircd
+      alias mkcd=mkdircd
+      alias mkz=mkdircd
+
     # Aliases
       alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#work-laptop"
       alias cd=z
