@@ -14,6 +14,7 @@
     };
 
     brews = [
+      "git-lfs"
       "lazygit"
       "node"
       "rbenv"
