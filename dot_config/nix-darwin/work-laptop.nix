@@ -17,6 +17,7 @@
       "git-lfs"
       "lazygit"
       "node"
+      "python3"
       "rbenv"
       "shellcheck"
       "uv"
