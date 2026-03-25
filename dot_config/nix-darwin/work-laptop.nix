@@ -25,6 +25,7 @@
     casks 
     = [
      #"claude-code" #replacing with native install from anthropic
+     "cmux"
      "font-meslo-lg-nerd-font"
      "iterm2"
      "qlmarkdown"
@@ -32,7 +33,7 @@
     ];
 
     taps = [
-    #"acsandmann/tap" #placeholder
+    "manaflow-ai/cmux" #cmux
     ];
 
     masApps = {
