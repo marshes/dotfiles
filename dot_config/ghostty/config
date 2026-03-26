@@ -1,2 +1,2 @@
-quit-after-last-window-closed=true
+quit-after-last-window-closed=false
 confirm-close-surface=false
