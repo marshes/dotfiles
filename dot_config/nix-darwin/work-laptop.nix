@@ -14,7 +14,7 @@
     };
 
     brews = [
-	  "sbx"
+	  "docker/tap/sbx"
       "git-lfs"
       "lazygit"
       "node"
