@@ -14,7 +14,6 @@
     };
 
     brews = [
-	  "docker/tap/sbx"
       "git-lfs"
       "lazygit"
       "node"
@@ -28,6 +27,7 @@
     = [
      #"claude-code" #replacing with native install from anthropic
      "cmux"
+     "sbx"
      "font-meslo-lg-nerd-font"
      "iterm2"
      "qlmarkdown"
