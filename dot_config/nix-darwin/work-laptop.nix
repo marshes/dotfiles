@@ -36,7 +36,7 @@
     ];
 
     taps = [
-    "docker/tap/sbx"
+    "docker/tap"
     "manaflow-ai/cmux" #cmux
     ];
 
