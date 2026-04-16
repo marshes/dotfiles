@@ -14,7 +14,7 @@
     };
 
     brews = [
-	  "docker/tap/sbx"
+	  "sbx"
       "git-lfs"
       "lazygit"
       "node"
@@ -36,6 +36,7 @@
     ];
 
     taps = [
+    "docker/tap/sbx"
     "manaflow-ai/cmux" #cmux
     ];
 
