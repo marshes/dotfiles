@@ -29,8 +29,8 @@
      "cmux"
      "font-meslo-lg-nerd-font"
      "iterm2"
-     #"qlmarkdown"
-	 "xykong/tap/flux-markdown"
+     "qlmarkdown"
+	 #"xykong/tap/flux-markdown"
      "markedit"
     ];
 
