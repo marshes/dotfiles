@@ -27,7 +27,7 @@
     = [
      #"claude-code" #replacing with native install from anthropic
      "cmux"
-     "sbx"
+     "sbx@0.25.0"
      "font-meslo-lg-nerd-font"
      "iterm2"
      "qlmarkdown"
