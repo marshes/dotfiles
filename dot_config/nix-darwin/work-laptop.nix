@@ -17,6 +17,7 @@
       "git-lfs"
       "lazygit"
       "node"
+      "pandoc"
       "python3"
       "rbenv"
       "shellcheck"
