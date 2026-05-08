@@ -2,7 +2,7 @@
 # manually set the path to the binary. For example:
 #
 # yabai.path = "/run/current-system/sw/bin/yabai"
-# aerospace.path = ...
+# aerospace.path = "/usr/local/bin/aerospace"
 
 theme = "system" # system, light, dark
 

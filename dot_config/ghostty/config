@@ -1,3 +1,5 @@
 quit-after-last-window-closed=false
 confirm-close-surface=false
 keybind = shift+enter=text:\x1b\r
+
+background-opacity = 1.00

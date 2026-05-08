@@ -15,7 +15,9 @@ fi
 
 defaults write com.apple.dock "expose-group-apps" -bool "false" && killall Dock
 
-brew services start skhd
+#brew services start skhd
+skhd --start-service
+
 killall Barik
 killall AeroSpace
 

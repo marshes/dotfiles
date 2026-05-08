@@ -29,7 +29,8 @@ EOF
 
 defaults write com.apple.dock "expose-group-apps" -bool "true" && killall Dock
 
-brew services stop skhd
+#brew services stop skhd
+skhd --stop-service
 
 #use hammerspoon to only have 1 space
 /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'ensureSpacesOne()'
