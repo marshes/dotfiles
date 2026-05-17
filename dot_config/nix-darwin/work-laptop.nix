@@ -34,6 +34,7 @@
      "qlmarkdown"
 	 #"xykong/tap/flux-markdown"
      "markedit"
+     "notunes"
     ];
 
     taps = [
