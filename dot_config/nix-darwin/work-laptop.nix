@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./macos.nix ];
-  
+  # macos.nix is composed by flake.nix's module list, so it is NOT imported here.
+
   networking.hostName = "work-laptop";
   
   homebrew = {
