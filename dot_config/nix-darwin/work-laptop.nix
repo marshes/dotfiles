@@ -5,14 +5,10 @@
 
   networking.hostName = "work-laptop";
   
+  # homebrew.enable + onActivation (autoUpdate/upgrade/cleanup) are set in macos.nix.
+  # nix merges these list-valued options across modules, so we only add work-specific
+  # brews/casks/taps/masApps here.
   homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "zap"; # <-- uncommment when setting up a new system, deletes anything installed manually, i.e. not declared in this file
-    };
-
     brews = [
       "git-lfs"
       "lazygit"
