@@ -28,17 +28,15 @@
     = [
      #"claude-code" #replacing with native install from anthropic
      "cmux"
-     "sbx@0.25.0"
+     #"sbx@0.25.0"
      "font-meslo-lg-nerd-font"
-     "iterm2"
      "qlmarkdown"
-	 #"xykong/tap/flux-markdown"
      "markedit"
      "notunes"
     ];
 
     taps = [
-    "docker/tap"
+    #"docker/tap" #needed for sbx
     "manaflow-ai/cmux" #cmux
     ];
 
