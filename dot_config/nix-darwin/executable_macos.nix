@@ -21,9 +21,8 @@
      fzf # fuzzy search
      jq # to search json files through commandline
      micro # easier to use nano
-     neofetch # system info
+     fastfetch # system info (replaced neofetch, which was removed from nixpkgs as unmaintained)
      pay-respects # fix typos quickly / update of thefuck
-     tree # see folder structure
      wget #...wget
      zoxide # to quickly jump to directories -replaces cd
     ];
@@ -33,7 +32,11 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap"; # <-- uncommment when setting up a new system, deletes anything installed manually, i.e. not declared in this file
+      # "zap" is AGGRESSIVE and always-on: every rebuild uninstalls anything not declared
+      # below AND, because `mas` is installed, removes any Mac App Store app not in masApps
+      # (that's why Xcode/Gifski/iMovie/etc. got targeted — they're declared in work-laptop.nix
+      # now). Anything brew-installed ad hoc is also wiped. Declare it here or lose it on rebuild.
+      cleanup = "zap";
     };
 
     brews = [
@@ -43,7 +46,7 @@
       "eza" # ls replacement, works well with additional aliases
       "gawk" # <-- needed for antidote zsh plugin manager
       "gh" # <-- github auth helper
-      "koekeishiya/formulae/skhd"
+      "asmvik/formulae/skhd" # was koekeishiya/formulae/skhd; tap migrated owner koekeishiya -> asmvik
       "mas"
     ];
 
@@ -74,7 +77,7 @@
 
   taps = [
     "FelixKratz/formulae"
-    "koekeishiya/formulae"
+    "asmvik/formulae" # skhd/yabai tap (migrated from koekeishiya/formulae)
     "mocki-toki/formulae"
     "nikitabobko/tap" # tap for aerospace
   ];
