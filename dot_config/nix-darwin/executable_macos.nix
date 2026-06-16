@@ -46,7 +46,6 @@
       "eza" # ls replacement, works well with additional aliases
       "gawk" # <-- needed for antidote zsh plugin manager
       "gh" # <-- github auth helper
-      "asmvik/formulae/skhd" # was koekeishiya/formulae/skhd; tap migrated owner koekeishiya -> asmvik
       "mas"
     ];
 
@@ -77,7 +76,6 @@
 
   taps = [
     "FelixKratz/formulae"
-    "asmvik/formulae" # skhd/yabai tap (migrated from koekeishiya/formulae)
     "mocki-toki/formulae"
     "nikitabobko/tap" # tap for aerospace
   ];
