@@ -158,7 +158,8 @@
       alias ls='eza'
       alias ll='eza -lh'
       alias la='eza -lah'
-      alias lt='eza --tree --level=2'
+      alias tree='eza --tree --level=2'
+      alias lt='eza -lh -s modified -r'
 
     # end vscode block 
     fi
