@@ -32,11 +32,17 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      # "zap" is AGGRESSIVE and always-on: every rebuild uninstalls anything not declared
-      # below AND, because `mas` is installed, removes any Mac App Store app not in masApps
-      # (that's why Xcode/Gifski/iMovie/etc. got targeted — they're declared in work-laptop.nix
-      # now). Anything brew-installed ad hoc is also wiped. Declare it here or lose it on rebuild.
-      cleanup = "zap";
+      # "uninstall": every rebuild removes any brew package/cask not declared below (but, unlike
+      # "zap", LEAVES their config/data files — so ad-hoc trials can be reinstalled later with
+      # settings intact). Because `mas` is installed, this ALSO removes any Mac App Store app not
+      # in masApps (that's why Xcode/Gifski are declared in work-laptop.nix). Workflow: install
+      # ad hoc for one-offs; if you keep using it, add it here, else the next rebuild removes it.
+      cleanup = "uninstall";
+      # Homebrew 6.x turned `brew bundle --cleanup` into a no-op dry-run that exits 1 ("Would
+      # uninstall... Run `brew bundle cleanup --force`"). nix-darwin still calls --cleanup, so
+      # without this flag cleanup silently does nothing AND fails the rebuild. `--force` restores
+      # actual removal + exit 0. Remove this once nix-darwin adapts to Homebrew 6.x's cleanup API.
+      extraFlags = [ "--force" ];
     };
 
     brews = [
