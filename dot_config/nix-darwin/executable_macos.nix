@@ -59,7 +59,7 @@
     = [
      "nikitabobko/tap/aerospace" #trying out hyprspace
      "alt-tab"
-     "mocki-toki/formulae/barik"
+     "MateoCerquetella/barik-enhanced/barik-enhanced" # active fork of abandoned mocki-toki/barik; keeps aerospace + original config schema
      "bluesnooze"
      "clop" # <-- macos image clipboard compression
      "ghostty"
@@ -82,7 +82,7 @@
 
   taps = [
     "FelixKratz/formulae"
-    "mocki-toki/formulae"
+    "MateoCerquetella/barik-enhanced" # barik-enhanced fork (replaced mocki-toki/formulae, which only provided the now-abandoned barik + emitted a deprecation warning)
     "nikitabobko/tap" # tap for aerospace
   ];
 
