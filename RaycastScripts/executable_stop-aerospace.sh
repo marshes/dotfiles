@@ -15,10 +15,7 @@ fi
 
 defaults write com.apple.dock "expose-group-apps" -bool "false" && killall Dock
 
-#brew services start skhd
-skhd --start-service
-
-killall Barik
+killall BarikEnhanced
 killall AeroSpace
 
 # Show menu bar (disable auto-hide)
@@ -34,6 +31,5 @@ sleep 1
 /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'ensureSpacesFive()'
 
 killall Hammerspoon
-killall SwipeAeroSpace
 
 echo "Aerospace stopped"
