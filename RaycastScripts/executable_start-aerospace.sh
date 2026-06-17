@@ -23,6 +23,11 @@ EOF
 
 defaults write com.apple.dock "expose-group-apps" -bool "true" && killall Dock
 
+# Wait for the restarted Dock to rebuild its accessibility tree before calling hs.spaces.
+# Without this, ensureSpacesOne() races the Dock restart and fails with
+# "axuielement.lua: incorrect type 'nil' ... (expected userdata)", leaving spaces uncollapsed.
+sleep 2
+
 #use hammerspoon to only have 1 space
 /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'ensureSpacesOne()'
 
