@@ -17,6 +17,7 @@ defaults write com.apple.dock "expose-group-apps" -bool "false" && killall Dock
 
 killall BarikEnhanced
 killall AeroSpace
+killall borders   # JankyBorders window outline, started by aerospace's after-startup-command
 
 # Show menu bar (disable auto-hide)
 osascript << EOF
