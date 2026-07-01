@@ -21,9 +21,6 @@
       # Those installed apps are NOT brew- or mas-managed, so homebrew.onActivation.cleanup
       # ("uninstall") will NOT touch them on rebuild — only this launcher cask is managed.
       "adobe-creative-cloud"
-
-      # Free RAW -> DNG converter (standalone cask, unlike LrC/Ps). Handy for camera imports.
-      "adobe-dng-converter"
     ];
 
     # Because `mas` is declared in macos.nix and cleanup = "uninstall", every rebuild removes
