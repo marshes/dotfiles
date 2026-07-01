@@ -55,13 +55,15 @@
       "mas"
     ];
 
-    casks 
+    casks
     = [
      "nikitabobko/tap/aerospace" #trying out hyprspace
      "alt-tab"
      "MateoCerquetella/barik-enhanced/barik-enhanced" # active fork of abandoned mocki-toki/barik; keeps aerospace + original config schema
      "bluesnooze"
      "clop" # <-- macos image clipboard compression
+     "cmux" # Ghostty-based terminal with vertical tabs for AI coding agents (shared; from manaflow-ai/cmux tap)
+     "font-meslo-lg-nerd-font" # nerd glyphs for p10k prompt + `eza --icons` (Ghostty/cmux have a built-in fallback, but this covers every terminal)
      "ghostty"
      "hammerspoon"
      "imageoptim"
@@ -83,6 +85,7 @@
   taps = [
     "FelixKratz/formulae"
     "MateoCerquetella/barik-enhanced" # barik-enhanced fork (replaced mocki-toki/formulae, which only provided the now-abandoned barik + emitted a deprecation warning)
+    "manaflow-ai/cmux" # tap for cmux (shared)
     "nikitabobko/tap" # tap for aerospace
   ];
 
@@ -150,7 +153,10 @@
       alias mkz=mkdircd
 
     # Aliases
-      alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix-darwin/.#work-laptop"
+    # Host-dynamic: resolves the flake attr from this machine's LocalHostName, which each
+    # config sets via networking.hostName (work-laptop / mac-mini). Keeps this shared alias
+    # correct on every machine instead of hardcoding one target.
+      alias rebuild='sudo darwin-rebuild switch --flake ~/.config/nix-darwin#$(scutil --get LocalHostName)'
       alias cd=z
       alias cat=bat
       alias sublime=subl

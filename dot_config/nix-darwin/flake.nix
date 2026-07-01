@@ -18,9 +18,18 @@
       
       # New work laptop config
       "work-laptop" = nix-darwin.lib.darwinSystem {
-        modules = [ 
-          ./macos.nix 
+        modules = [
+          ./macos.nix
           ./work-laptop.nix
+        ];
+        specialArgs = { inherit self; };
+      };
+
+      # Personal mac mini config
+      "mac-mini" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./macos.nix
+          ./mac-mini.nix
         ];
         specialArgs = { inherit self; };
       };
