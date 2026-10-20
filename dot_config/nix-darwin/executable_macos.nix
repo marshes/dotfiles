@@ -42,7 +42,7 @@
       # uninstall... Run `brew bundle cleanup --force`"). nix-darwin still calls --cleanup, so
       # without this flag cleanup silently does nothing AND fails the rebuild. `--force` restores
       # actual removal + exit 0. Remove this once nix-darwin adapts to Homebrew 6.x's cleanup API.
-      extraFlags = [ "--force" ];
+      extraFlags = [ "--force-cleanup" ];
     };
 
     brews = [
