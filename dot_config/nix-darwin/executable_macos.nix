@@ -23,6 +23,7 @@
      micro # easier to use nano
      fastfetch # system info (replaced neofetch, which was removed from nixpkgs as unmaintained)
      pay-respects # fix typos quickly / update of thefuck
+     ripgrep
      wget #...wget
      zoxide # to quickly jump to directories -replaces cd
     ];
