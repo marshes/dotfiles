@@ -39,11 +39,10 @@
       # in masApps (that's why Xcode/Gifski are declared in work-laptop.nix). Workflow: install
       # ad hoc for one-offs; if you keep using it, add it here, else the next rebuild removes it.
       cleanup = "uninstall";
-      # Homebrew 6.x turned `brew bundle --cleanup` into a no-op dry-run that exits 1 ("Would
-      # uninstall... Run `brew bundle cleanup --force`"). nix-darwin still calls --cleanup, so
-      # without this flag cleanup silently does nothing AND fails the rebuild. `--force` restores
-      # actual removal + exit 0. Remove this once nix-darwin adapts to Homebrew 6.x's cleanup API.
-      extraFlags = [ "--force-cleanup" ];
+      # No extraFlags needed: nix-darwin (since PR #1789, Jun 2026) passes `--force-cleanup` itself
+      # for "uninstall"/"zap". Homebrew 7 rejects the old `--cleanup` flag outright, so a flake.lock
+      # pinned before that PR breaks the rebuild no matter what extraFlags says.
+      # https://github.com/nix-darwin/nix-darwin/issues/1787
     };
 
     brews = [
@@ -56,8 +55,7 @@
       "mas"
     ];
 
-    casks
-    = [
+    casks = [
      "nikitabobko/tap/aerospace" #trying out hyprspace
      "alt-tab"
      "MateoCerquetella/barik-enhanced/barik-enhanced" # active fork of abandoned mocki-toki/barik; keeps aerospace + original config schema
@@ -83,12 +81,17 @@
      "zen"
     ];
 
-  taps = [
-    "FelixKratz/formulae"
-    "MateoCerquetella/barik-enhanced" # barik-enhanced fork (replaced mocki-toki/formulae, which only provided the now-abandoned barik + emitted a deprecation warning)
-    "manaflow-ai/cmux" # tap for cmux (shared)
-    "nikitabobko/tap" # tap for aerospace
-  ];
+    # Homebrew 6+ refuses to load packages from untrusted third-party taps, and every cleanup
+    # (`--force-cleanup`) RESETS Homebrew's trust store to whatever this Brewfile declares, so a
+    # manual `brew trust` gets wiped on the next rebuild. Declare trust here instead. (Fully
+    # qualified brews/casks like "nikitabobko/tap/aerospace" are trusted by default; unqualified
+    # ones like "cmux" can only get trust from their tap.)
+    taps = [
+      { name = "FelixKratz/formulae"; trusted = true; }
+      { name = "MateoCerquetella/barik-enhanced"; trusted = true; } # barik-enhanced fork (replaced mocki-toki/formulae, which only provided the now-abandoned barik + emitted a deprecation warning)
+      { name = "manaflow-ai/cmux"; trusted = true; } # tap for cmux (shared)
+      { name = "nikitabobko/tap"; trusted = true; } # tap for aerospace
+    ];
 
     masApps = {
      Amphetamine = 937984704;

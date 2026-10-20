@@ -10,6 +10,7 @@
   # brews/casks/taps/masApps here.
   homebrew = {
     brews = [
+      "cameroncooke/axe/axe" # iOS simulator automation CLI
       "git-filter-repo" # split monorepo into per-surface packages w/ history preserved
       "git-lfs"
       "lazygit"
@@ -21,8 +22,7 @@
       "uv"
     ];
 
-    casks
-    = [
+    casks = [
      #"claude-code" #replacing with native install from anthropic
      #"sbx@0.25.0"
      # cmux, font-meslo-lg-nerd-font, notunes moved to shared macos.nix (used on both machines).
@@ -31,9 +31,11 @@
      "markedit"
     ];
 
-    #taps = [
-    #"docker/tap" #needed for sbx
-    #];
+    # trusted = true: see the taps note in macos.nix (cleanup resets brew's trust store).
+    taps = [
+      { name = "cameroncooke/axe"; trusted = true; } # tap for axe
+      #{ name = "docker/tap"; trusted = true; } #needed for sbx
+    ];
 
     masApps = {
      WireGuard = 1451685025;
